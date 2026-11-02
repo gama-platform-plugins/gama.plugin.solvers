@@ -134,6 +134,15 @@ public class Expressions {
 		return binK(scope, Term.Bin.ADD, a, k);
 	}
 
+	/** Sum of a variable and a constant. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "+", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the expression 'variable plus constant'.")
+	@no_test
+	public static GamaVariable plus(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return plus(scope, a, (double) k);
+	}
+
 	/** Sum of a constant and a variable. */
 	@operator (value = "+", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the expression 'constant plus variable'.")
@@ -141,6 +150,15 @@ public class Expressions {
 	public static GamaVariable plus(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kBin(scope, Term.Bin.ADD, k, b);
+	}
+
+	/** Sum of a constant and a variable. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "+", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the expression 'constant plus variable'.")
+	@no_test
+	public static GamaVariable plus(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return plus(scope, (double) k, b);
 	}
 
 	/** Difference of two variables or expressions. */
@@ -161,6 +179,15 @@ public class Expressions {
 		return binK(scope, Term.Bin.SUB, a, k);
 	}
 
+	/** Difference of a variable and a constant. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "-", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the expression 'variable minus constant'.")
+	@no_test
+	public static GamaVariable minus(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return minus(scope, a, (double) k);
+	}
+
 	/** Difference of a constant and a variable. */
 	@operator (value = "-", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the expression 'constant minus variable'.")
@@ -168,6 +195,15 @@ public class Expressions {
 	public static GamaVariable minus(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kBin(scope, Term.Bin.SUB, k, b);
+	}
+
+	/** Difference of a constant and a variable. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "-", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the expression 'constant minus variable'.")
+	@no_test
+	public static GamaVariable minus(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return minus(scope, (double) k, b);
 	}
 
 	/** Opposite of a variable or expression. */
@@ -197,6 +233,15 @@ public class Expressions {
 		return binK(scope, Term.Bin.MUL, a, k);
 	}
 
+	/** Product of a variable and a constant. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "*", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the expression 'variable times constant'.")
+	@no_test
+	public static GamaVariable times(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return times(scope, a, (double) k);
+	}
+
 	/** Product of a constant and a variable. */
 	@operator (value = "*", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the expression 'constant times variable'.")
@@ -204,6 +249,15 @@ public class Expressions {
 	public static GamaVariable times(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kBin(scope, Term.Bin.MUL, k, b);
+	}
+
+	/** Product of a constant and a variable. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "*", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the expression 'constant times variable'.")
+	@no_test
+	public static GamaVariable times(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return times(scope, (double) k, b);
 	}
 
 	/** Quotient of two variables or expressions. */
@@ -225,6 +279,15 @@ public class Expressions {
 		return binK(scope, Term.Bin.DIV, a, k);
 	}
 
+	/** Quotient of a variable by a constant. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "/", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the expression 'variable divided by constant', as an euclidean division.")
+	@no_test
+	public static GamaVariable divide(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return divide(scope, a, (double) k);
+	}
+
 	/** Quotient of a constant by a variable. */
 	@operator (value = "/", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the expression 'constant divided by variable', as an euclidean division.")
@@ -232,6 +295,15 @@ public class Expressions {
 	public static GamaVariable divide(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kBin(scope, Term.Bin.DIV, k, b);
+	}
+
+	/** Quotient of a constant by a variable. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "/", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the expression 'constant divided by variable', as an euclidean division.")
+	@no_test
+	public static GamaVariable divide(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return divide(scope, (double) k, b);
 	}
 
 	/** Remainder of two variables or expressions. */
@@ -313,6 +385,15 @@ public class Expressions {
 		return relK(scope, Relation.Rel.EQ, a, k);
 	}
 
+	/** Equality with a constant. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the expression equals the constant.", see = { "same" })
+	@no_test
+	public static GamaConstraint eq(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return eq(scope, a, (double) k);
+	}
+
 	/** Equality of a constant with an expression. */
 	@operator (value = "=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the constraint stating that the constant equals the expression.", see = { "same" })
@@ -320,6 +401,15 @@ public class Expressions {
 	public static GamaConstraint eq(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kRel(scope, Relation.Rel.EQ, k, b);
+	}
+
+	/** Equality of a constant with an expression. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the constant equals the expression.", see = { "same" })
+	@no_test
+	public static GamaConstraint eq(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return eq(scope, (double) k, b);
 	}
 
 	/** Difference of two variables or expressions. */
@@ -340,6 +430,15 @@ public class Expressions {
 		return relK(scope, Relation.Rel.NE, a, k);
 	}
 
+	/** Difference from a constant. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "!=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the expression differs from the constant.")
+	@no_test
+	public static GamaConstraint neq(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return neq(scope, a, (double) k);
+	}
+
 	/** Difference of a constant from an expression. */
 	@operator (value = "!=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the constraint stating that the constant differs from the expression.")
@@ -347,6 +446,15 @@ public class Expressions {
 	public static GamaConstraint neq(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kRel(scope, Relation.Rel.NE, k, b);
+	}
+
+	/** Difference of a constant from an expression. Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "!=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the constant differs from the expression.")
+	@no_test
+	public static GamaConstraint neq(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return neq(scope, (double) k, b);
 	}
 
 	/** Strict order between two variables or expressions. */
@@ -367,6 +475,15 @@ public class Expressions {
 		return relK(scope, Relation.Rel.LT, a, k);
 	}
 
+	/** Strict upper bound Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "<", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the expression is strictly smaller than the constant.")
+	@no_test
+	public static GamaConstraint lt(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return lt(scope, a, (double) k);
+	}
+
 	/** Strict lower bound. */
 	@operator (value = "<", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the constraint stating that the constant is strictly smaller than the expression.")
@@ -374,6 +491,15 @@ public class Expressions {
 	public static GamaConstraint lt(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kRel(scope, Relation.Rel.LT, k, b);
+	}
+
+	/** Strict lower bound Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "<", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the constant is strictly smaller than the expression.")
+	@no_test
+	public static GamaConstraint lt(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return lt(scope, (double) k, b);
 	}
 
 	/** Order between two variables or expressions. */
@@ -394,6 +520,15 @@ public class Expressions {
 		return relK(scope, Relation.Rel.LE, a, k);
 	}
 
+	/** Upper bound Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "<=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the expression is smaller than or equal to the constant.")
+	@no_test
+	public static GamaConstraint le(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return le(scope, a, (double) k);
+	}
+
 	/** Lower bound. */
 	@operator (value = "<=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the constraint stating that the constant is smaller than or equal to the expression.")
@@ -401,6 +536,15 @@ public class Expressions {
 	public static GamaConstraint le(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kRel(scope, Relation.Rel.LE, k, b);
+	}
+
+	/** Lower bound Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = "<=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the constant is smaller than or equal to the expression.")
+	@no_test
+	public static GamaConstraint le(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return le(scope, (double) k, b);
 	}
 
 	/** Strict order, reversed. */
@@ -421,6 +565,15 @@ public class Expressions {
 		return relK(scope, Relation.Rel.GT, a, k);
 	}
 
+	/** Strict lower bound, reversed Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = ">", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the expression is strictly greater than the constant.")
+	@no_test
+	public static GamaConstraint gt(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return gt(scope, a, (double) k);
+	}
+
 	/** Strict upper bound, reversed. */
 	@operator (value = ">", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the constraint stating that the constant is strictly greater than the expression.")
@@ -428,6 +581,15 @@ public class Expressions {
 	public static GamaConstraint gt(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kRel(scope, Relation.Rel.GT, k, b);
+	}
+
+	/** Strict upper bound, reversed Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = ">", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the constant is strictly greater than the expression.")
+	@no_test
+	public static GamaConstraint gt(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return gt(scope, (double) k, b);
 	}
 
 	/** Order, reversed. */
@@ -448,6 +610,15 @@ public class Expressions {
 		return relK(scope, Relation.Rel.GE, a, k);
 	}
 
+	/** Lower bound, reversed Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = ">=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the expression is greater than or equal to the constant.")
+	@no_test
+	public static GamaConstraint ge(final IScope scope, final GamaVariable a, final int k)
+			throws GamaRuntimeException {
+		return ge(scope, a, (double) k);
+	}
+
 	/** Upper bound, reversed. */
 	@operator (value = ">=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
 	@doc (value = "Builds the constraint stating that the constant is greater than or equal to the expression.")
@@ -455,6 +626,15 @@ public class Expressions {
 	public static GamaConstraint ge(final IScope scope, final double k, final GamaVariable b)
 			throws GamaRuntimeException {
 		return kRel(scope, Relation.Rel.GE, k, b);
+	}
+
+	/** Upper bound, reversed Taken over an int, so that an integer literal matches exactly. */
+	@operator (value = ">=", category = { SolverUtils.CATEGORY }, concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint stating that the constant is greater than or equal to the expression.")
+	@no_test
+	public static GamaConstraint ge(final IScope scope, final int k, final GamaVariable b)
+			throws GamaRuntimeException {
+		return ge(scope, (double) k, b);
 	}
 
 	// ---------------------------------------------------------------------------------------------------------------

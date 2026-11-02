@@ -224,6 +224,17 @@ public class Constraints {
 		return new GamaConstraint(p, new Relation(relationOf(scope, op), new Term.Var(var), new Term.Const(value)));
 	}
 
+	/** The same over an int, so that an integer literal matches exactly. */
+	@operator (
+			value = "arithm",
+			category = { SolverUtils.CATEGORY },
+			concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint 'variable operator value', the value being an integer.")
+	@no_test
+	public static GamaConstraint arithm(final IScope scope, final GamaVariable var, final String op, final int value) throws GamaRuntimeException {
+		return arithm(scope, var, op, (double) value);
+	}
+
 	/**
 	 * A relation between two variables.
 	 */
@@ -273,6 +284,17 @@ public class Constraints {
 				new Term.Binary(arithmetic, new Term.Var(var), new Term.Var(other)), new Term.Const(value)));
 	}
 
+	/** The same over an int, so that an integer literal matches exactly. */
+	@operator (
+			value = "arithm",
+			category = { SolverUtils.CATEGORY },
+			concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint 'variable op1 variable op2 value', the value being an integer.")
+	@no_test
+	public static GamaConstraint arithm(final IScope scope, final GamaVariable var, final String op1, final GamaVariable other, final String op2, final int value) throws GamaRuntimeException {
+		return arithm(scope, var, op1, other, op2, (double) value);
+	}
+
 	/**
 	 * A weighted sum compared to a constant.
 	 */
@@ -294,6 +316,17 @@ public class Constraints {
 		if (c.length != vars.size()) throw GamaRuntimeException
 				.error("scalar expects as many coefficients (" + c.length + ") as variables (" + vars.size() + ")", scope);
 		return new GamaConstraint(p, new Relation(relationOf(scope, op), weightedSum(vars, c), new Term.Const(value)));
+	}
+
+	/** The same over an int, so that an integer literal matches exactly. */
+	@operator (
+			value = "scalar",
+			category = { SolverUtils.CATEGORY },
+			concept = { IConcept.OPTIMIZATION })
+	@doc (value = "Builds the constraint 'sum of the variables weighted by the coefficients, operator value', the value being an integer.")
+	@no_test
+	public static GamaConstraint scalar(final IScope scope, final IList<GamaVariable> vars, final IList<Integer> coeffs, final String op, final int value) throws GamaRuntimeException {
+		return scalar(scope, vars, coeffs, op, (double) value);
 	}
 
 	/**
