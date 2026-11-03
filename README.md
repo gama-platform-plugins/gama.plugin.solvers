@@ -2,7 +2,7 @@
 
 # Solvers for GAMA
 
-A GAMA plugin bringing two families of solver to GAML: constraint programming, through [Choco-solver](https://choco-solver.org) 6, and linear and mixed integer programming, through [HiGHS](https://highs.dev). Declare the decision variables, state the constraints over them, and let a solver find an assignment that satisfies them, or the best one according to an objective.
+A GAMA plugin bringing two families of solver to GAML: constraint programming, through [Choco-solver](https://choco-solver.org) 6, and MILP (Mixed Integer Linear Programming) through [HiGHS](https://highs.dev). Declare the decision variables, state the constraints over them, and let a solver find an assignment that satisfies them, or the best one according to an objective.
 
 The point of putting both behind one plugin is that they are written the same way. A model declares variables with `int_var` or `real_var`, states its constraints with the arithmetic and comparison operators of GAML, and reads a solution with `value_of`, whichever solver runs underneath. The engine is one word given when the problem is created, and nothing else in the model changes:
 
